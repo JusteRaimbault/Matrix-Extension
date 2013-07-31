@@ -21,7 +21,7 @@ SRCS=$(wildcard src/*.java)
 
 matrix.jar: $(SRCS) Jama-1.0.2.jar NetLogoHeadless.jar Makefile manifest.txt
 	mkdir -p classes
-	$(JAVA_HOME)/bin/javac -g -Werror -encoding us-ascii -source 1.7 -target 1.7 -classpath NetLogoHeadless.jar$(COLON)Jama-1.0.2.jar$(COLON)$(SCALA_JAR) -d classes $(SRCS)
+	$(JAVA_HOME)/bin/javac -g -Werror -encoding us-ascii -source 1.7 -target 1.7 -classpath "NetLogoHeadless.jar$(COLON)Jama-1.0.2.jar$(COLON)$(SCALA_JAR)" -d classes $(SRCS)
 	jar cmf manifest.txt matrix.jar -C classes .
 
 NetLogoHeadless.jar:
