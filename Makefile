@@ -1,5 +1,9 @@
 ifeq ($(origin JAVA_HOME), undefined)
-  JAVA_HOME=/usr
+  ifneq (,$(findstring Darwin,$(shell uname)))
+    JAVA_HOME=`/usr/libexec/java_home -F -v1.7*`
+  else
+    JAVA_HOME=/usr
+  endif
 endif
 
 ifneq (,$(findstring CYGWIN,$(shell uname -s)))
@@ -9,11 +13,15 @@ else
   COLON=:
 endif
 
+ifeq ($(origin SCALA_JAR), undefined)
+  SCALA_JAR=$(NETLOGO)/lib/scala-library.jar
+endif
+
 SRCS=$(wildcard src/*.java)
 
 matrix.jar: $(SRCS) Jama-1.0.2.jar NetLogoHeadless.jar Makefile manifest.txt
 	mkdir -p classes
-	$(JAVA_HOME)/bin/javac -g -encoding us-ascii -source 1.7 -target 1.7 -classpath NetLogoHeadless.jar$(COLON)Jama-1.0.2.jar$(COLON)$(HOME)/.sbt/boot/scala-2.10.1/lib/scala-library.jar -d classes $(SRCS)
+	$(JAVA_HOME)/bin/javac -g -Werror -encoding us-ascii -source 1.7 -target 1.7 -classpath NetLogoHeadless.jar$(COLON)Jama-1.0.2.jar$(COLON)$(SCALA_JAR) -d classes $(SRCS)
 	jar cmf manifest.txt matrix.jar -C classes .
 
 NetLogoHeadless.jar:
