@@ -1,10 +1,10 @@
 package org.nlogo.extensions.matrix;
 
+import org.nlogo.core.Syntax;
 import org.nlogo.api.CompilerException;
 import org.nlogo.api.LogoException;
 import org.nlogo.api.ExtensionException;
 import org.nlogo.api.Argument;
-import org.nlogo.api.Syntax;
 import org.nlogo.api.Context;
 import org.nlogo.api.LogoList;
 import org.nlogo.api.LogoListBuilder;
