@@ -9,8 +9,8 @@ import org.nlogo.api.Argument;
 import org.nlogo.api.Context;
 import org.nlogo.api.LogoList;
 import org.nlogo.api.LogoListBuilder;
-import org.nlogo.api.DefaultReporter;
-import org.nlogo.api.DefaultCommand;
+import org.nlogo.api.Reporter;
+import org.nlogo.api.Command;
 
 public class MatrixExtension
     extends org.nlogo.api.DefaultClassManager {
@@ -359,7 +359,7 @@ public class MatrixExtension
     return (LogoMatrix) obj;
   }
 
-  public static class Get extends DefaultReporter {
+  public static class Get implements Reporter {
 
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.WildcardType(),
@@ -383,7 +383,7 @@ public class MatrixExtension
     }
   }
 
-  public static class Set extends DefaultCommand {
+  public static class Set implements Command {
 
     public Syntax getSyntax() {
       return SyntaxJ.commandSyntax(new int[]{Syntax.WildcardType(),
@@ -406,7 +406,7 @@ public class MatrixExtension
     }
   }
 
-  public static class SetRow extends DefaultCommand {
+  public static class SetRow implements Command {
 
     public Syntax getSyntax() {
       return SyntaxJ.commandSyntax(new int[]{Syntax.WildcardType(),
@@ -433,7 +433,7 @@ public class MatrixExtension
     }
   }
 
-  public static class SwapRows extends DefaultCommand {
+  public static class SwapRows implements Command {
 
     public Syntax getSyntax() {
       return SyntaxJ.commandSyntax(new int[]{Syntax.WildcardType(),
@@ -466,7 +466,7 @@ public class MatrixExtension
     }
   }
 
-  public static class SetColumn extends DefaultCommand {
+  public static class SetColumn implements Command {
 
     public Syntax getSyntax() {
       return SyntaxJ.commandSyntax(new int[]{Syntax.WildcardType(),
@@ -493,7 +493,7 @@ public class MatrixExtension
     }
   }
 
-  public static class SwapColumns extends DefaultCommand {
+  public static class SwapColumns implements Command {
 
     public Syntax getSyntax() {
       return SyntaxJ.commandSyntax(new int[]{Syntax.WildcardType(),
@@ -526,7 +526,7 @@ public class MatrixExtension
     }
   }
 
-  public static class SetAndReport extends DefaultReporter {
+  public static class SetAndReport implements Reporter {
 
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.WildcardType(),
@@ -552,7 +552,7 @@ public class MatrixExtension
     }
   }
 
-  public static class Dimensions extends DefaultReporter {
+  public static class Dimensions implements Reporter {
 
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.WildcardType()},
@@ -569,7 +569,7 @@ public class MatrixExtension
     }
   }
 
-  public static class ToRowList extends DefaultReporter {
+  public static class ToRowList implements Reporter {
 
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.WildcardType()},
@@ -582,7 +582,7 @@ public class MatrixExtension
     }
   }
 
-  public static class FromRowList extends DefaultReporter {
+  public static class FromRowList implements Reporter {
 
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.ListType()},
@@ -595,7 +595,7 @@ public class MatrixExtension
     }
   }
 
-  public static class ToColumnList extends DefaultReporter {
+  public static class ToColumnList implements Reporter {
 
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.WildcardType()},
@@ -608,7 +608,7 @@ public class MatrixExtension
     }
   }
 
-  public static class FromColumnList extends DefaultReporter {
+  public static class FromColumnList implements Reporter {
 
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.ListType()},
@@ -621,7 +621,7 @@ public class MatrixExtension
     }
   }
 
-  public static class MakeConstant extends DefaultReporter {
+  public static class MakeConstant implements Reporter {
 
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.NumberType(), Syntax.NumberType(), Syntax.NumberType()},
@@ -634,7 +634,7 @@ public class MatrixExtension
     }
   }
 
-  public static class MakeIdentity extends DefaultReporter {
+  public static class MakeIdentity implements Reporter {
 
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.NumberType()},
@@ -648,7 +648,7 @@ public class MatrixExtension
     }
   }
 
-  public static class Copy extends DefaultReporter {
+  public static class Copy implements Reporter {
 
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.WildcardType()},
@@ -661,7 +661,7 @@ public class MatrixExtension
     }
   }
 
-  public static class PrettyPrintText extends DefaultReporter {
+  public static class PrettyPrintText implements Reporter {
 
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.WildcardType()},
@@ -710,7 +710,7 @@ public class MatrixExtension
   }
 
 
-  public static class TimesScalar extends DefaultReporter {
+  public static class TimesScalar implements Reporter {
 
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.WildcardType(), Syntax.NumberType()},
@@ -725,7 +725,7 @@ public class MatrixExtension
     }
   }
 
-  public static class Times extends DefaultReporter {
+  public static class Times implements Reporter {
 
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.WildcardType(), Syntax.WildcardType()},
@@ -744,7 +744,7 @@ public class MatrixExtension
     }
   }
 
-  public static class TimesElementWise extends DefaultReporter {
+  public static class TimesElementWise implements Reporter {
 
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.WildcardType(), Syntax.WildcardType()},
@@ -763,7 +763,7 @@ public class MatrixExtension
     }
   }
 
-  public static class PlusScalar extends DefaultReporter {
+  public static class PlusScalar implements Reporter {
 
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.WildcardType(), Syntax.NumberType()},
@@ -780,7 +780,7 @@ public class MatrixExtension
     }
   }
 
-  public static class Plus extends DefaultReporter {
+  public static class Plus implements Reporter {
 
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.WildcardType(), Syntax.WildcardType()},
@@ -806,7 +806,7 @@ public class MatrixExtension
     }
   }
 
-  public static class Det extends DefaultReporter {
+  public static class Det implements Reporter {
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.WildcardType()},
           Syntax.NumberType());
@@ -823,7 +823,7 @@ public class MatrixExtension
     }
   }
 
-  public static class Rank extends DefaultReporter {
+  public static class Rank implements Reporter {
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.WildcardType()},
           Syntax.NumberType());
@@ -840,7 +840,7 @@ public class MatrixExtension
     }
   }
 
-  public static class Cond extends DefaultReporter {
+  public static class Cond implements Reporter {
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.WildcardType()},
           Syntax.NumberType());
@@ -857,7 +857,7 @@ public class MatrixExtension
     }
   }
 
-  public static class Trace extends DefaultReporter {
+  public static class Trace implements Reporter {
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.WildcardType()},
           Syntax.NumberType());
@@ -875,7 +875,7 @@ public class MatrixExtension
   }
 
 
-  public static class Inverse extends DefaultReporter {
+  public static class Inverse implements Reporter {
 
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.WildcardType()},
@@ -893,7 +893,7 @@ public class MatrixExtension
     }
   }
 
-  public static class Transpose extends DefaultReporter {
+  public static class Transpose implements Reporter {
 
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.WildcardType()},
@@ -907,7 +907,7 @@ public class MatrixExtension
     }
   }
 
-  public static class Submatrix extends DefaultReporter {
+  public static class Submatrix implements Reporter {
 
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.WildcardType(), Syntax.NumberType(),
@@ -951,7 +951,7 @@ public class MatrixExtension
     }
   }
 
-  public static class GetRow extends DefaultReporter {
+  public static class GetRow implements Reporter {
 
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.WildcardType(),
@@ -974,7 +974,7 @@ public class MatrixExtension
     }
   }
 
-  public static class GetColumn extends DefaultReporter {
+  public static class GetColumn implements Reporter {
 
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.WildcardType(),
@@ -997,7 +997,7 @@ public class MatrixExtension
     }
   }
 
-  public static class RealEigenvalues extends DefaultReporter {
+  public static class RealEigenvalues implements Reporter {
 
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.WildcardType()},
@@ -1016,7 +1016,7 @@ public class MatrixExtension
     }
   }
 
-  public static class ImaginaryEigenvalues extends DefaultReporter {
+  public static class ImaginaryEigenvalues implements Reporter {
 
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.WildcardType()},
@@ -1035,7 +1035,7 @@ public class MatrixExtension
     }
   }
 
-  public static class Eigenvectors extends DefaultReporter {
+  public static class Eigenvectors implements Reporter {
 
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.WildcardType()},
@@ -1049,7 +1049,7 @@ public class MatrixExtension
     }
   }
 
-  public static class Solve extends DefaultReporter {
+  public static class Solve implements Reporter {
 
     public Syntax getSyntax() {
       return SyntaxJ.reporterSyntax(new int[]{Syntax.WildcardType(), Syntax.WildcardType()},
@@ -1068,7 +1068,7 @@ public class MatrixExtension
     }
   }
 
-  public static class ForecastLinearTrend extends DefaultReporter {
+  public static class ForecastLinearTrend implements Reporter {
     // This reporter takes a simple list of values, computes the regression line
     // describing them, and then returns a simple list where the first element
     // is the predicted value of the next point along the line, the second is
@@ -1148,7 +1148,7 @@ public class MatrixExtension
     }
   }
 
-  public static class ForecastCompoundTrend extends DefaultReporter {
+  public static class ForecastCompoundTrend implements Reporter {
     // This reporter takes a simple list of values, finds the compound growth equation
     // (line) best describing them, and then returns a simple list where the first
     // element is the predicted value of the next point along the line, the second
@@ -1242,7 +1242,7 @@ public class MatrixExtension
     }
   }
 
-  public static class ForecastContinuousTrend extends DefaultReporter {
+  public static class ForecastContinuousTrend implements Reporter {
     // This reporter takes a simple list of values, fits a continous growth function
     // describing them, and then returns a simple list where the first element
     // is the predicted value of the next point along the growth line, the second
@@ -1337,7 +1337,7 @@ public class MatrixExtension
     }
   }
 
-  public static class Regress extends DefaultReporter {
+  public static class Regress implements Reporter {
     // This reporter sets up and solves a linear OLS regression.
     // The input is LogoMatrix, with the first column being the observations on the
     // dependent variable and each subsequent column being the observations on the
