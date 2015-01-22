@@ -161,7 +161,8 @@ public class MatrixExtension
     // find out the maximum column size of any of the rows,
     // in case we have a "ragged" right edge, where some rows
     // have more columns than others.
-    for (Object obj : nestedLogoList) {
+    for (java.util.Iterator<?> it = nestedLogoList.javaIterator(); it.hasNext();) {
+      Object obj = it.next();
       if (obj instanceof LogoList) {
         LogoList rowList = (LogoList) obj;
         if (numCols == -1) {
@@ -178,10 +179,12 @@ public class MatrixExtension
     }
     double[][] array = new double[numRows][numCols];
     int row = 0;
-    for (Object obj : nestedLogoList) {
+    for (java.util.Iterator<?> it = nestedLogoList.javaIterator(); it.hasNext();) {
+      Object obj = it.next();
       int col = 0;
       LogoList rowList = (LogoList) obj;
-      for (Object obj2 : rowList) {
+      for (java.util.Iterator<?> it2 = rowList.javaIterator(); it2.hasNext();) {
+        Object obj2 = it2.next();
         if (obj2 instanceof Number) {
           array[row][col] = ((Number) obj2).doubleValue();
           col++;
