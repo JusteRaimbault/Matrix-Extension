@@ -25,7 +25,7 @@ matrix.jar: $(SRCS) Jama-1.0.2.jar NetLogoHeadless.jar Makefile manifest.txt
 	jar cmf manifest.txt matrix.jar -C classes .
 
 NetLogoHeadless.jar:
-	curl -f -s -S -L 'http://dl.bintray.com/netlogo/NetLogoHeadlessMaven/org/nlogo/netlogoheadless/5.2.0-841c76b/netlogoheadless-5.2.0-841c76b.jar' -o NetLogoHeadless.jar
+	curl -f -s -S -L 'http://dl.bintray.com/netlogo/NetLogoHeadless/org/nlogo/netlogoheadless/5.2.0-6f86ac6/netlogoheadless-5.2.0-6f86ac6.jar' -o NetLogoHeadless.jar
 
 Jama-1.0.2.jar:
 	curl -f -s -S -L 'http://ccl.northwestern.edu/devel/Jama-1.0.2.jar' -o Jama-1.0.2.jar
