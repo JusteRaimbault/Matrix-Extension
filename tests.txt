@@ -15,10 +15,17 @@ Matrix
   (word matrix:times glob1 glob3) => "{{matrix:  [ [ 1 -2 3 ][ 4 -5 10 ] ]}}"
   matrix:to-row-list (matrix:plus glob2 glob3) => [[2 0 0] [0 0 0] [0 0 2]]
 
+matrix-is-matrix
+  extensions [ matrix ]
+  matrix:is-matrix? 0 => false
+  matrix:is-matrix? "hi" => false
+  matrix:is-matrix? [[1 2 3][4 5 6]] => false
+  matrix:is-matrix? matrix:make-identity 3 => true
+
 matrix-times-scalar
   extensions [ matrix ]
   O> set glob1 matrix:from-row-list [[1 2 3] [4 5 6]]
-  (word matrix:times-scala m -1) => "{{matrix:  [ [ -1 -2 -3 ][ -4 -5 -6 ] ]}}"
+  (word matrix:times-scalar glob1 -1) => "{{matrix:  [ [ -1 -2 -3 ][ -4 -5 -6 ] ]}}"
   (word glob1) => "{{matrix:  [ [ 1 2 3 ][ 4 5 6 ] ]}}"
 
 matrix-times
