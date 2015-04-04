@@ -52,7 +52,7 @@ lib/asm-all-3.3.1.jar:
 	(cd lib; curl -O -f -s -S 'http://ccl.northwestern.edu/netlogo/5.0.5/lib/asm-all-3.3.1.jar')
 
 .PHONY: test
-test: matrix.jar NetLogo.jar Jama-1.0.2.jar tests.txt lib/NetLogo-tests.jar lib/scalatest_2.9.2-1.8.jar lib/scala-library.jar lib/picocontainer-2.13.6.jar lib/asm-all-3.3.1.jar
+test: matrix.jar NetLogo.jar Jama-1.0.3.jar tests.txt lib/NetLogo-tests.jar lib/scalatest_2.9.2-1.8.jar lib/scala-library.jar lib/picocontainer-2.13.6.jar lib/asm-all-3.3.1.jar
 	rm -rf tmp; mkdir tmp
 	mkdir -p tmp/extensions/matrix
 	cp matrix.jar Jama*.jar tests.txt tmp/extensions/matrix
