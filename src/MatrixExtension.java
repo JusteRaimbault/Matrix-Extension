@@ -278,6 +278,8 @@ public class MatrixExtension
     primManager.addPrimitive("swap-columns", new SwapColumns());
     // matrix:set-and-report mat rowI colJ newValue => matrix object
     primManager.addPrimitive("set-and-report", new SetAndReport());
+    // (matrix:is-matrix? x) => bool
+    primManager.addPrimitive("is-matrix?", new IsMatrix());
     // (matrix:dimensions mat) => [numRows,numCols]
     primManager.addPrimitive("dimensions", new Dimensions());
     // matrix:to-row-list mat => [[a11 a12 ...] [a21 a22 ...] [a31 a32 ...] ...]
@@ -626,6 +628,17 @@ public class MatrixExtension
       dims.add((double) mat.matrix.getRowDimension());
       dims.add((double) mat.matrix.getColumnDimension());
       return dims.toLogoList();
+    }
+  }
+
+  public static class IsMatrix extends DefaultReporter {
+    @Override public Syntax getSyntax() {
+      return Syntax.reporterSyntax(new int[]{Syntax.WildcardType()}, Syntax.BooleanType());
+    }
+
+    @Override
+    public Object report(Argument args[], Context context) throws ExtensionException, LogoException {
+      return (Boolean) (args[0].get() instanceof LogoMatrix);
     }
   }
 
