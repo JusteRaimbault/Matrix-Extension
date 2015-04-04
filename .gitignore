@@ -1,11 +1,8 @@
-/Jama-*.jar
-/Jama-*.jar.pack.gz
-/NetLogo.jar
-/NetLogoLite.jar
+*.jar
+*.pack.gz
+*.iml
 /classes/
 /lib/
-/matrix.jar
-/matrix.jar.pack.gz
 /matrix.zip
 /scalatest*.jar
 /tmp/
