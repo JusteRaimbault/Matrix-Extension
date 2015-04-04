@@ -818,7 +818,7 @@ public class MatrixExtension
   static public final Operator minusOp = new MinusOp();
 
   public static class TimesScalar extends DefaultReporter {
-    @Override 
+    @Override
     public Syntax getSyntax() {
       return Syntax.reporterSyntax(new int[]{Syntax.WildcardType(), Syntax.NumberType()},
           Syntax.WildcardType());
@@ -826,7 +826,7 @@ public class MatrixExtension
     @Override
     public Object report(Argument args[], Context context) throws ExtensionException, LogoException {
       try {
-        return getMatrixFromNumeric(timesElementsOp.applyEquals(getNumericFromArgument(args[0]), getNumericFromArgument(args[1])),
+        return getMatrixFromNumeric(timesElementsOp.apply(getNumericFromArgument(args[0]), getNumericFromArgument(args[1])),
                 "You must give matrix:times-scalar a matrix as the first input.");
       } catch (IllegalArgumentException e) {
         throw new ExtensionException(e);
@@ -916,21 +916,21 @@ public class MatrixExtension
       for (int i = 1; i < args.length; i++) {
         mats[i-1] = getMatrixFromArgument(args[i]).matrix.getArray();
       }
-      
+
       // Check to make sure that the number of matrices supplied is at least
       // as many as is expected by the task.  mapFnctn.formals() yields an array,
       // the length of which is the number of matrices expected by the task.
       // E.g., if the task definition contains a reference to ?3 in the mapping,
-      // the task expects at least three matrices.  Throw an exception if 
-      // there are fewer matrices than expected.  (There is no problem if 
+      // the task expects at least three matrices.  Throw an exception if
+      // there are fewer matrices than expected.  (There is no problem if
       // there are more. They just will not be used by the mapping.)
 
       // This could !=, but NetLogo's `map` also only checks that there are enough arguments
       if (mapFnctn.formals().length > mats.length) {
-        throw new org.nlogo.api.ExtensionException("Task expected " + 
+        throw new org.nlogo.api.ExtensionException("Task expected " +
                 mapFnctn.formals().length + " matrix inputs but only got " + mats.length + ".");
       }
-      
+
       int nmats = mats.length;
 
       // make sure all the underlying matrices have the same dimensions.
@@ -939,7 +939,7 @@ public class MatrixExtension
       for (double[][] mat : mats) {
         if (mat.length != nrows || mat[0].length != ncols) {
           throw new org.nlogo.api.ExtensionException("All matrices must have the same dimmensions: "
-                  + "the first was " + nrows + "x" + ncols 
+                  + "the first was " + nrows + "x" + ncols
                   + " and another was " + mat.length + "x" + mat[0].length + ".");
         }
       }
