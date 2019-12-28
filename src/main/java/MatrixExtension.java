@@ -1593,6 +1593,18 @@ public class MatrixExtension
         Y.set(i, 0, X.get(i, 0));
         X.set(i, 0, 1.0);
       }
+
+      /* dirty way: perturbate matrix to increase rank - better report an exception
+      if(X.rank()<X.getColumnDimension()) {
+        Random r = new Random();
+        for (int j = 0; j < X.getColumnDimension(); j++) {
+          X.set(j,j,X.get(j,j)+1e-6*(r.nextFloat()-0.5));
+        }
+      }*/
+      if(X.rank()<X.getColumnDimension()) {
+        throw new org.nlogo.api.ExtensionException(
+                "Matrix is not full rank.");
+      }
       Jama.Matrix A = X.solve(Y);
 
       // A is now a numVars x 1 matrix of coefficients a(0) ... a(numVars).
